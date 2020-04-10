@@ -6,5 +6,6 @@ Over-harvesting is increasingly recognised as a critical issue for people and co
 
 ## Provided files and description
 
-- Distance sampling data of blue duikers at Lomako
+- monticola_FINAL_20122013.csv is the distance sampling data of blue duikers at Lomako. X an Y are the recorded coordinates of each observation (WGS84 projection system); transect_id is the name of the transect; obs_period describe if the observation was made by day or night; obs_type describes if the observation was a dung pile or a direct observation of a blue duiker; nb stands for the number of observed individuals; distance is the perpendical distance of the detected dung or duiker from the transect; obs_time is the recorded timestamp for each observation; transect_start_time is the time at which observers started to walk the transect; transect_end_time is the time at which observers ended to walk the transect; X_prog and Y_proj are location coordinates in the XX projection system;
+
 - Customized R Code to run the analyses, based on Borcher & Cox (2017)
