@@ -54,5 +54,5 @@ pi.sigmoI = function(x,logphi,w) {  ## sigmoid density function that sums to 1 o
   c = plogis(logphi[3])
   return(1/(c*w + a*log(exp((w-b)/a)+1)-a*log(exp(-b/a)+1))*(c + 1/(exp(-(x-b)/a)+1)))
 }      
-attributes(pi.sigmo)=list(fName="pi.sigmoI")
+attributes(pi.sigmoI)=list(fName="pi.sigmoI")
 
