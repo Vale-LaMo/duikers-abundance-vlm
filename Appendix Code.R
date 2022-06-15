@@ -30,7 +30,7 @@ table(data$transect_id, as.POSIXlt(data$obs_time)$year)
 
 #### Generate forward distance data
 ####    (scenario letters correspond to Fig. 3 in the main text)
-scenario = "a"
+scenario = "c"
 if (scenario == "a")
   data$y = pmax(0.01, data$x + rnorm(length(data$x), -1+(data$obs_type=="Crotte"), 1))
 # nel primo scenario la distanza yi è all'incirca dello stesso ordine di grandezza di xi, con qualche variabilità gaussiana
@@ -63,7 +63,9 @@ unlist(lapply(list(montiVU2012,montiCR2012,montiVU2013,montiCR2013), function(x)
  y = c(montiVU2012$y , montiVU2013$y)
  x = c(montiVU2012$x , montiVU2013$x)
  hr = h.RE # h.yTRE non è compatibile con pi.sigmoI
+ # funzionano h.RE, h.IP, h.SS, h.okamura
  pi.x = pi.sigmo
+ # funzionano con h.RE: pi.sigmo, pi.CHN, pi.TN
  ystart = ceiling(max(y))
  w = ceiling(max(x))
  length.b = 2
@@ -91,16 +93,20 @@ unlist(lapply(list(montiVU2012,montiCR2012,montiVU2013,montiCR2013), function(x)
  tmp1 <- tryCatch.W.E (boot(fitVU))
  if(! "error" %in% class(tmp1$value))  tabVU=tmp1$value
  }
+ ### Population density
+ tabVU[2,]/sum(transect.lengths)/(fitVU$w/1000) /2 ## divided by two to get the average over 2 years
+ 
  
  # vedere https://github.com/david-borchers/LT2D/blob/master/inst/FitsForPaper.r
  # linea nera sigmoide = distribuzione reale animali
  # linea grigia = detection osservata
  # linea tratteggiata = detection corretta tenendo conto della risposta comportamentale
  plotfit.x(x[x<=w],fitVU,nclass=20);rug(x[x<=w])
+ fName = "h1"
  GoFx(fitVU,plot=TRUE)$pvals
- #plotfit.y(y[x<=w],x,fit.n,nclass=20);rug(x=y[x<=w])
+ plotfit.y(y[x<=w],x,fitVU,nclass=20);rug(x=y[x<=w])
  plotfit.smoothfy(fitVU,nclass=32);rug(x=y[x<=w])
- GoFy(fitVU,plot=TRUE)$pvals
+ GoFy(fitVU,plot=TRUE)$pvals # non funziona
  #EHSW:
  phatInterval(fitVU)
  phatInterval(fitVU)*w

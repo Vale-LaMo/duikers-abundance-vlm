@@ -3,7 +3,7 @@
 #### w = perpendicular truncation distance
 #### All excepted pi.sigmo are extracted from the LT2D package
 
-list.pi = c("pi.HN","pi.CHN","pi.TN","pi.const","pi.sigmo")
+list.pi = c("pi.HN","pi.CHN","pi.TN","pi.const","pi.sigmo", "pi.sigmoI")
 
 pi.HN=function(x,logphi,w) { ## Half-normal
   hnF=function(x,logphi) exp(-x^2/(2*exp(logphi[1])^2))
