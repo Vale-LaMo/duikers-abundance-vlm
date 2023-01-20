@@ -8,12 +8,12 @@ library(tidyverse)
 library(LT2D)
 
 #### Load 2D distance functions
-source("com_hfunctions.R")
-source("com_pifunctions.R")
-source("com_likelihoodutilities.R")
+source("functions/com_hfunctions.R")
+source("functions/com_pifunctions.R")
+source("functions/com_likelihoodutilities.R")
 
 #### Load dataset
-data <- read.csv("monticola_FINAL_20122013.csv", sep=",")
+data <- read.csv("data/monticola_FINAL_20122013.csv", sep=",")
 data %>% 
   rename(x = distance) -> data ## rename perpendicular distance to x
 data$transect_start_time = as.POSIXct(as.character(data$transect_start_time),format = "%d/%m/%Y %H:%M:%S")
